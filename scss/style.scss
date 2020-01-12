@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: arial;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: minmax(120px, 200px) minmax(240px, 1fr) 80px;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas:
+        'logotype search hamburger'
+        'gallery gallery gallery'
+        'contact contact contact'
+        'footer footer footer'
+    ;
+
+    @media(min-width: 1024px) {
+        grid-template-columns: minmax(300px, auto) 1fr;
+        grid-template-rows: auto auto auto 1fr auto auto;
+        grid-template-areas:
+            'logotype gallery'
+            'hamburger gallery'
+            'search gallery'
+            '. gallery'
+            'contact gallery'
+            'footer footer'
+        ;
+    }
+
+    //kontener
+    min-height: 100vh;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.logo {
+    // grid-column-start: 1;
+    // grid-column-end: 2;
+    // grid-row-start: 1;
+    // grid-row-end: 2;
+    background-color: red;
+    height: 200px;
+    grid-area: logotype;
+
+
+}
+
+.search {
+    grid-area: search;
+    // grid-column: 2/3;
+    // grid-row: 1/2;
+    background-color: green;
+}
+
+.menu {
+    grid-area: hamburger;
+    // grid-column: -1/-2;
+    // grid-row: 1/2;
+    background-color: yellow;
+
+    @media(min-width:1024px) {
+        height: 300px;
+    }
+}
+
+.gallery {
+    grid-area: gallery;
+    // grid-column: 1/-1;
+    // grid-row: 2/3;
+    background-color: rgb(76, 91, 177);
+
+    //kontener
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+    gap: 15px;
+    padding: 120px 15px 15px;
+
+    img {
+        width: 100%;
+    }
+
+    h1 {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+.contact {
+    grid-area: contact;
+    height: 60px;
+    background-color: rgb(39, 17, 17);
+}
+
+.footer {
+    grid-area: footer;
+    height: 40px;
+    background-color: rgb(85, 175, 100);
+}
